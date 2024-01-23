@@ -24,63 +24,66 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater).apply {
             setContentView(root)
         }
+        launchGameActivity()
+        launchLevelMenu()
 
-        binding.startGame.setOnClickListener {
-            val value = getPreferences(EXTRA_LEVEL_KEY, 0)
+    }
 
-            if (value in 1..3) {
-                val intent = GameActivity.newIntent(this)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, getString(R.string.notchooselevel), Toast.LENGTH_SHORT).show() //TODO: добавить перевод
-            }
-        }
+    private fun launchLevelMenu() {
 
         binding.levelButton.setOnClickListener {
             val dialog = Dialog(this, R.style.Theme_MyApplication)
             with(dialog) {
-                window?.setBackgroundDrawable(ColorDrawable(Color.argb(50, 0, 0, 0)))
+                window?.setBackgroundDrawable(
+                    ColorDrawable(Color.argb(50, 0, 0, 0)))
                 setContentView(R.layout.level_menu)
                 setCancelable(true)
             }
 
-            val buttonEasy = dialog.findViewById<TextView>(R.id.buttonEasy)
-            val buttonMedium = dialog.findViewById<TextView>(R.id.buttonMedium)
-            val buttonHard = dialog.findViewById<TextView>(R.id.buttonHard)
-
-
-            buttonEasy.setOnClickListener {
-                commitPreferences(EXTRA_LEVEL_KEY, 1)
-                isReady = true
-                dialog.hide()
-                Toast.makeText(this, getString(R.string.timer2), Toast.LENGTH_SHORT).show()
-            }
-
-            buttonMedium.setOnClickListener {
-                commitPreferences(EXTRA_LEVEL_KEY, 2)
-                isReady = true
-                dialog.hide()
-                Toast.makeText(this, getString(R.string.timer5), Toast.LENGTH_SHORT).show()
-            }
-
-            buttonHard.setOnClickListener {
-                commitPreferences(EXTRA_LEVEL_KEY, 3)
-                isReady = true
-                dialog.hide()
-                Toast.makeText(this, getString(R.string.timer10), Toast.LENGTH_SHORT).show()
-            }
+            setButtonListener(dialog, R.id.buttonEasy, 1, R.string.timer2)
+            setButtonListener(dialog, R.id.buttonMedium, 2, R.string.timer5)
+            setButtonListener(dialog, R.id.buttonHard, 3, R.string.timer10)
 
             dialog.show()
         }
     }
 
-
-    private fun getPreferences(key : String, defaultValue : Int) : Int {
-        return getSharedPreferences(SHARED_PREF_APPLICATION_NAME, MODE_PRIVATE).getInt(key, defaultValue)
+    private fun setButtonListener(dialog: Dialog, buttonId : Int, level : Int, timer : Int) {
+        dialog.findViewById<TextView>(buttonId).setOnClickListener{
+            commitPreferences(EXTRA_LEVEL_KEY, level)
+            isReady = true
+            dialog.hide()
+            Toast.makeText(this, getString(timer), Toast.LENGTH_SHORT).show()
+        }
     }
 
-    private fun commitPreferences(key : String, value : Int) {
-        getSharedPreferences(SHARED_PREF_APPLICATION_NAME, MODE_PRIVATE).edit().putInt(key,  value).apply()
+    private fun launchGameActivity() {
+        binding.startGame.setOnClickListener {
+            val value = getPreferences(EXTRA_LEVEL_KEY, 0)
+            if (value in 1..3) {
+                val intent = GameActivity.newIntent(this)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this,
+                    getString(R.string.notchooselevel),
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun getPreferences(
+        key : String,
+        defaultValue : Int) : Int {
+
+        return getSharedPreferences(SHARED_PREF_APPLICATION_NAME,
+            MODE_PRIVATE).getInt(key, defaultValue)
+    }
+
+    private fun commitPreferences(
+        key : String,
+        value : Int) {
+        getSharedPreferences(SHARED_PREF_APPLICATION_NAME,
+            MODE_PRIVATE).edit().putInt(key,  value).apply()
     }
 
     companion object {

@@ -21,7 +21,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         val value = getPreferences(EXTRA_ONBOARDING, 0)
+        showOnBoarding(value)
 
+    }
+
+    private fun showOnBoarding(value : Int) {
         if (value == 100) {
             val intent = MenuActivity.newIntent(this)
             startActivity(intent)
@@ -30,8 +34,8 @@ class MainActivity : AppCompatActivity() {
             setFirstFragment()
             startFragments()
         }
-
     }
+
     private fun completeOnboarding() {
         getSharedPreferences(EXTRA_ONBOARDING, MODE_PRIVATE).edit().putInt(
             EXTRA_ONBOARDING, 100).apply()
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = MenuActivity.newIntent(this)
                     startActivity(intent)
                     completeOnboarding()
-                    finish() // очищаем ресурсы, активити больше не нужна, включаа фрагменты
+                    finish()
                     null
                 }
                 else -> null
@@ -77,7 +81,10 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun getPreferences(key : String, defaultValue : Int) : Int {
-        return getSharedPreferences(SHARED_PREF_ONBOARDING_NAME, MODE_PRIVATE).getInt(key, defaultValue)
+    private fun getPreferences(
+        key : String,
+        defaultValue : Int) : Int {
+        return getSharedPreferences(SHARED_PREF_ONBOARDING_NAME,
+            MODE_PRIVATE).getInt(key, defaultValue)
     }
 }

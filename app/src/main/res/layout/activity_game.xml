@@ -1,142 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameActivity"
-    android:background="@color/onboarding_one">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/timerPercent"
-        android:fontFamily="@font/archivo"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/timer"
-        app:layout_constraintEnd_toEndOf="@+id/timer"
-        app:layout_constraintStart_toStartOf="@+id/timer"
-        app:layout_constraintTop_toTopOf="@+id/timer"
-        tools:text="60%" />
-
-    <ProgressBar
-        android:layout_margin="32dp"
-        android:id="@+id/timer"
-        style="@style/CircularDeterminateProgressBar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/attempts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/archivo"
-        android:padding="8dp"
-        android:text="0 / 0"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/timer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/timer" />
-
-    <TextView
-        android:visibility="gone"
-        android:background="@drawable/custom_button"
-        android:fontFamily="@font/archivo"
-        android:layout_margin="16dp"
-        tools:text="00:18"
-        android:padding="8dp"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="24sp"
-        android:id="@+id/timer1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:padding="24dp"
-        android:layout_margin="18dp"
-        android:background="@drawable/custom_button_level"
-        android:id="@+id/question"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/archivo"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="46sp"
-        app:layout_constraintBottom_toTopOf="@+id/option1"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="31 + 35" />
+        android:background="@color/onboarding_one">
 
 
-    <TextView
-        android:id="@+id/option1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_option_1"
-        android:fontFamily="@font/archivo"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/option3"
-        app:layout_constraintEnd_toEndOf="@+id/option3"
-        app:layout_constraintStart_toStartOf="@+id/option3"
-        tools:text="-13" />
+        <TextView
+            android:id="@+id/timerPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timer"
+            app:layout_constraintEnd_toEndOf="@+id/timer"
+            app:layout_constraintStart_toStartOf="@+id/timer"
+            app:layout_constraintTop_toTopOf="@+id/timer"
+            tools:text="60%" />
 
-    <TextView
-        android:id="@+id/option2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_option_2"
-        android:fontFamily="@font/archivo"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/option4"
-        app:layout_constraintEnd_toEndOf="@+id/option4"
-        app:layout_constraintStart_toStartOf="@+id/option4"
-        tools:text="-18" />
+        <ProgressBar
+            android:id="@+id/timer"
+            style="@style/CircularDeterminateProgressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/option3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_option_3"
-        android:fontFamily="@font/archivo"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="-13" />
+        <TextView
+            android:id="@+id/attempts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/archivo"
+            android:padding="8dp"
+            android:text="0 / 0"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/timer" />
 
-    <TextView
-        android:id="@+id/option4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_option_4"
-        android:fontFamily="@font/archivo"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="-18" />
+        <TextView
+            android:id="@+id/timer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/archivo"
+            android:padding="8dp"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="00:18" />
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:background="@drawable/custom_button_level"
+            android:fontFamily="@font/archivo"
+            android:padding="24dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="46sp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timer"
+            tools:text="31 + 35" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/option1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/custom_option_1"
+            android:fontFamily="@font/archivo"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/option4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/option3"
+            tools:text="-13" />
+
+        <TextView
+            android:id="@+id/option2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/custom_option_2"
+            android:fontFamily="@font/archivo"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/option4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/option3"
+            app:layout_constraintTop_toBottomOf="@+id/question"
+            tools:text="-18" />
+
+        <TextView
+            android:id="@+id/option3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/custom_option_3"
+            android:fontFamily="@font/archivo"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/option1"
+            app:layout_constraintEnd_toStartOf="@+id/option2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question"
+            tools:text="-13" />
+
+        <TextView
+            android:id="@+id/option4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/custom_option_4"
+            android:fontFamily="@font/archivo"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/option1"
+            app:layout_constraintTop_toBottomOf="@+id/option2"
+            tools:text="-18" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

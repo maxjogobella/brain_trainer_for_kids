@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -27,18 +28,19 @@ class GameActivity : AppCompatActivity() {
     private var inCorrect : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater).apply {
             setContentView(root)
         }
         viewModel = ViewModelProvider(this)[GameViewModel::class.java]
+        initApp()
+    }
 
-        super.onCreate(savedInstanceState)
-        setListenerIntoOptions()
+    private fun initApp() {
+        initAnswersToButtons()
         initQuestions()
         startTimer()
-        setTimer()
-
-
+        updateTimer()
     }
 
     private fun startTimer() {
@@ -63,8 +65,8 @@ class GameActivity : AppCompatActivity() {
        }
    }
 
-   private fun setTimer() {
-
+   @SuppressLint("SetTextI18n")
+   private fun updateTimer() {
        viewModel.isTimerFinished().observe(this) {isFinishing ->
            if (isFinishing) {
                showDialog()
@@ -81,15 +83,15 @@ class GameActivity : AppCompatActivity() {
    }
 
    private fun setTextIntoOptions() {
-
-       val list : List<Int>
-
-       list = if (getPreferences(EXTRA_LEVEL_KEY, 0) == 1) {
-           viewModel.generateQuestion(Difficulty.EASY)
-       } else if (getPreferences(EXTRA_LEVEL_KEY, 0) == 2) {
-           viewModel.generateQuestion(Difficulty.MEDIUM)
-       } else {
-           viewModel.generateQuestion(Difficulty.HARD)
+       val list : List<Int> = when(getPreferences(EXTRA_LEVEL_KEY, 0))   {
+           1 -> {
+               viewModel.generateQuestion(Difficulty.EASY)
+           }
+           2 -> {
+               viewModel.generateQuestion(Difficulty.MEDIUM)
+           } else -> {
+               viewModel.generateQuestion(Difficulty.HARD)
+           }
        }
 
        binding.option1.text = list[0].toString()
@@ -98,7 +100,8 @@ class GameActivity : AppCompatActivity() {
        binding.option4.text = list[3].toString()
    }
 
-   private fun setListenerIntoOptions() {
+   @SuppressLint("SetTextI18n")
+   private fun initAnswersToButtons() {
        var correctAnswer = ""
        viewModel.getCorrectAnswer().observe(this) {answer ->
            correctAnswer = answer.toString()
@@ -115,7 +118,7 @@ class GameActivity : AppCompatActivity() {
            }
            else {
                counter++
-               binding.attempts.text = "$counter / $inCorrect"
+               binding.attempts.text = "${this.counter} / $inCorrect"
                initQuestions()
            }
        }
@@ -126,32 +129,37 @@ class GameActivity : AppCompatActivity() {
        binding.option4.setOnClickListener(optionClickListener)
    }
 
+   @SuppressLint("SetTextI18n")
    private fun showDialog() {
        val dialog = Dialog(this, R.style.Theme_MyApplication)
        with(dialog) {
-           window?.setBackgroundDrawable(ColorDrawable(Color.argb(50, 0, 0, 0)))
+           window?.setBackgroundDrawable(
+               ColorDrawable(Color.argb(50, 0, 0, 0)))
            setContentView(R.layout.popup_status)
            setCancelable(true)
        }
 
-      val result = dialog.findViewById<TextView>(R.id.my_result)
-       val max_result = dialog.findViewById<TextView>(R.id.my_max_result)
+       val result = dialog.findViewById<TextView>(R.id.my_result)
+       val maxResultView = dialog.findViewById<TextView>(R.id.my_max_result)
        result.text = "${getString(R.string.your_result)} $counter"
 
-       val savedInt = getUserInfo().maxValue
-       if (counter >= savedInt) {
-           getSharedPreferences(SHARED_PREF_APPLICATION_NAME, MODE_PRIVATE).edit().putInt(EXTRA_MAX_VALUE, counter).apply()
+       val maxSavedResult = getUserInfo().maxValue
+
+       if (counter >= maxSavedResult) {
+           getSharedPreferences(SHARED_PREF_APPLICATION_NAME,
+               MODE_PRIVATE).edit().putInt(EXTRA_MAX_VALUE, counter).apply()
        }
 
-       max_result.text = "${getString(R.string.max_result)} $savedInt"
-
+       maxResultView.text = "${getString(R.string.max_result)} $maxSavedResult"
        startAgain(dialog)
-
        dialog.show()
    }
 
-   private fun getPreferences(key : String, defaultValue : Int) : Int {
-       return getSharedPreferences(SHARED_PREF_APPLICATION_NAME, MODE_PRIVATE).getInt(key, defaultValue)
+   private fun getPreferences(
+       key : String,
+       defaultValue : Int) : Int {
+       return getSharedPreferences(
+           SHARED_PREF_APPLICATION_NAME, MODE_PRIVATE).getInt(key, defaultValue)
    }
 
 
