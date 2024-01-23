@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Brain Trainer</string>
+    <string name="timer_text">Timer</string>
+    <string name="time_finished">The times has finished</string>
+    <string name="incorrect_answer">Incorrect answer</string>
+    <string name="your_result">Your result : </string>
+    <string name="max_result">Max result :</string>
+    <string name="first_onboarding_title">Tired of chaos in your\nhead?</string>
+    <string name="first_onboarding_description">Solve simple and interesting math problems, choose the right answer and see how your brain improves.</string>
+
+    <string name="second_onboarding_title">Want to be happier and\nmore confident?</string>
+    <string name="second_onboarding_description">Get points, achievements and compliments that boost your self-esteem and mood as you solve math problems.</string>
+
+    <string name="third_onboarding_title">Ready for new\nchallenges?</string>
+    <string name="third_onboarding_description">Try various and difficult tasks that make your brain work at full power.</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="level">Level</string>
+    <string name="stat_game">Stat game</string>
+    <string name="choose_level">Choose a level before start a game</string>
+    <string name="get_started">Get Started</string>
+    <string name="start_again">Start again</string>
+    <string name="status_game">Status game</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="timer2">Timer for 2 minutes</string>
+    <string name="timer5">Timer for 5 minutes</string>
+    <string name="timer10">Timer for 10 minutes</string>
+    <string name="notchooselevel">You didn\'t chose level</string>
 </resources>

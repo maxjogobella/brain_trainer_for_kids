@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="onboarding_one">#8fbff9</color>
+    <color name="onboarding_two">#fdb6c5</color>
+    <color name="onboarding_second">#fbedc8</color>
+    <color name="background_menu">#ffa1d3</color>
 </resources>

@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap android:gravity="center|left" android:src="@drawable/filled_dot" />
+    </item>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/unfilled_dot" />
+    </item>
+    <item>
+        <bitmap android:gravity="center|right" android:src="@drawable/unfilled_dot" />
+    </item>
+</layer-list>

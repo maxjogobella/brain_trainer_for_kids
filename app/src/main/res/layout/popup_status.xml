@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0dp"
+    android:backgroundTint="@android:color/transparent"
+    android:layout_gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/onboarding_one"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_margin="8dp"
+            android:background="@drawable/custom_background_cross"
+            android:src="@drawable/cross"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="36dp"
+            android:layout_height="36dp"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:fontFamily="@font/archivo"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/status_game"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/archivo"
+            android:id="@+id/my_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/your_result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/my_max_result"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
+
+        <TextView
+            android:fontFamily="@font/archivo"
+            app:layout_constraintBottom_toTopOf="@id/startAgain"
+            app:layout_constraintTop_toBottomOf="@id/my_result"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:id="@+id/my_max_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/max_result"/>
+
+
+        <TextView
+            android:id="@+id/startAgain"
+            style="@style/style_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/archivo"
+            android:text="@string/start_again"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_max_result" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
