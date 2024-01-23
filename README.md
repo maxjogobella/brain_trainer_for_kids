@@ -20,5 +20,4 @@ Kotlin/MVVM/Room/MocKK
 
 ## App
 <img src="https://github.com/maxnotmaximchik/brain_trainer_for_kids/assets/106059025/42e9ec96-37ec-4a6c-a97a-11759e05ea35" width="250" />
-<img src="https://github.com/maxnotmaximchik/brain_trainer_for_kids/assets/106059025/d2785aca-afaf-4e56-8685-1b81e77b671c" width="250" />
-
+<img src="https://github.com/maxnotmaximchik/brain_trainer_for_kids/assets/106059025/939758b0-dd60-4f1c-a47c-33fe3c5a564b" width="250" />
